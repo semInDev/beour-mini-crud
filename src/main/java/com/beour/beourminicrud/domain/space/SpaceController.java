@@ -18,8 +18,8 @@ public class SpaceController {
         return ResponseEntity.ok(spaceService.createSpace(spaceRequestDto));
     }
 
-    @GetMapping
-    public ResponseEntity<SpaceResponseDto> getSpace(@RequestParam Long spaceId) {
+    @GetMapping("/{spaceId}")
+    public ResponseEntity<SpaceResponseDto> getSpace(@PathVariable Long spaceId) {
         return ResponseEntity.ok(spaceService.getSpace(spaceId));
     }
 }
