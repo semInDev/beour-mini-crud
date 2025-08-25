@@ -23,4 +23,21 @@ public class SpaceService {
                 .orElseThrow(()->new SpaceNotFoundException(id));
         return SpaceResponseDto.fromEntity(space);
     }
+
+    public SpaceResponseDto updateSpace(Long id, SpaceRequestDto spaceRequestDto) {
+        Space space = spaceRepository.findById(id)
+                .orElseThrow(()->new SpaceNotFoundException(id));
+        space.update(
+                spaceRequestDto.getName(),
+                spaceRequestDto.getSpaceCategory(),
+                spaceRequestDto.getAddress(),
+                spaceRequestDto.getDescription());
+        return SpaceResponseDto.fromEntity(spaceRepository.save(space));
+    }
+
+    public void deleteSpace(Long id) {
+        Space space = spaceRepository.findById(id)
+                        .orElseThrow(() -> new SpaceNotFoundException(id));
+        spaceRepository.deleteById(id);
+    }
 }

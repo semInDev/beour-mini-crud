@@ -24,4 +24,11 @@ public class Space {
     private SpaceCategory spaceCategory;
     private String address;
     private String description;
+
+    public void update(String name, SpaceCategory spaceCategory, String address, String description) {
+        this.name = name;
+        this.spaceCategory = spaceCategory;
+        this.address = address;
+        this.description = description;
+    }
 }

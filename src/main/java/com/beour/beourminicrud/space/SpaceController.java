@@ -32,4 +32,15 @@ public class SpaceController {
     public ResponseEntity<SpaceResponseDto> getSpace(@PathVariable Long spaceId) {
         return ResponseEntity.ok(spaceService.getSpace(spaceId));
     }
+
+    @PutMapping("/{spaceId}")
+    public ResponseEntity<SpaceResponseDto> updateSpace(@PathVariable Long spaceId, @Validated @RequestBody SpaceRequestDto spaceRequestDto) {
+        return ResponseEntity.ok(spaceService.updateSpace(spaceId, spaceRequestDto));
+    }
+
+    @DeleteMapping("/{spaceId}")
+    public ResponseEntity<Void> deleteSpace(@PathVariable Long spaceId) {
+        spaceService.deleteSpace(spaceId);
+        return ResponseEntity.ok().build();
+    }
 }
