@@ -1,5 +1,6 @@
 package com.beour.beourminicrud.domain.space.entity;
 
+import com.beour.beourminicrud.domain.space.enums.SpaceCategory;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,9 @@ public class Space {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // private Long hostId;
     private String name;
+    private SpaceCategory spaceCategory;
     private String address;
     private String description;
 }
