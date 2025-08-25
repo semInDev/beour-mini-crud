@@ -1,5 +1,6 @@
 package com.beour.beourminicrud.space.service;
 
+import com.beour.beourminicrud.global.exception.SpaceNotFoundException;
 import com.beour.beourminicrud.space.dto.SpaceRequestDto;
 import com.beour.beourminicrud.space.dto.SpaceResponseDto;
 import com.beour.beourminicrud.space.entity.Space;
@@ -26,7 +27,7 @@ public class SpaceService {
 
     public SpaceResponseDto getSpace(Long id) {
         Space space = spaceRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("해당 공간이 존재하지 않습니다."));
+                .orElseThrow(()->new SpaceNotFoundException(id));
 
         return new SpaceResponseDto(space.getId(), space.getName(), space.getAddress(), space.getDescription());
     }
