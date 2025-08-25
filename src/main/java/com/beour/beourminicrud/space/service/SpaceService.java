@@ -1,9 +1,9 @@
-package com.beour.beourminicrud.domain.space.service;
+package com.beour.beourminicrud.space.service;
 
-import com.beour.beourminicrud.domain.space.dto.SpaceRequestDto;
-import com.beour.beourminicrud.domain.space.dto.SpaceResponseDto;
-import com.beour.beourminicrud.domain.space.entity.Space;
-import com.beour.beourminicrud.domain.space.repository.SpaceRepository;
+import com.beour.beourminicrud.space.dto.SpaceRequestDto;
+import com.beour.beourminicrud.space.dto.SpaceResponseDto;
+import com.beour.beourminicrud.space.entity.Space;
+import com.beour.beourminicrud.space.repository.SpaceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

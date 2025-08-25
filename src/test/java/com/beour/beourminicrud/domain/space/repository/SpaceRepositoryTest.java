@@ -1,12 +1,13 @@
 package com.beour.beourminicrud.domain.space.repository;
 
-import com.beour.beourminicrud.domain.space.enums.SpaceCategory;
+import com.beour.beourminicrud.space.enums.SpaceCategory;
+import com.beour.beourminicrud.space.repository.SpaceRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.beour.beourminicrud.domain.space.entity.Space;
+import com.beour.beourminicrud.space.entity.Space;
 
 import java.util.List;
 import java.util.Optional;

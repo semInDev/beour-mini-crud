@@ -1,6 +1,6 @@
-package com.beour.beourminicrud.domain.space.dto;
+package com.beour.beourminicrud.space.dto;
 
-import com.beour.beourminicrud.domain.space.enums.SpaceCategory;
+import com.beour.beourminicrud.space.enums.SpaceCategory;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

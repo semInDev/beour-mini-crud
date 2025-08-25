@@ -1,4 +1,4 @@
-package com.beour.beourminicrud.domain.space.dto;
+package com.beour.beourminicrud.space.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

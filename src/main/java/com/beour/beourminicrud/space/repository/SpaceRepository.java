@@ -1,7 +1,7 @@
-package com.beour.beourminicrud.domain.space.repository;
+package com.beour.beourminicrud.space.repository;
 
-import com.beour.beourminicrud.domain.space.entity.Space;
-import com.beour.beourminicrud.domain.space.enums.SpaceCategory;
+import com.beour.beourminicrud.space.entity.Space;
+import com.beour.beourminicrud.space.enums.SpaceCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

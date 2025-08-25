@@ -1,4 +1,4 @@
-package com.beour.beourminicrud.domain.space.enums;
+package com.beour.beourminicrud.space.enums;
 
 import lombok.RequiredArgsConstructor;
 
