@@ -1,10 +1,7 @@
 package com.beour.beourminicrud.domain.space.entity;
 
 import com.beour.beourminicrud.domain.space.enums.SpaceCategory;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +19,8 @@ public class Space {
 
     // private Long hostId;
     private String name;
+
+    @Enumerated(EnumType.STRING) // 이거 없으면 DB에 ordinal(숫자) 값으로 저장됨. enum 순서 바꾸면 데이터 꼬임 
     private SpaceCategory spaceCategory;
     private String address;
     private String description;
