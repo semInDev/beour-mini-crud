@@ -1,7 +1,9 @@
 package com.beour.beourminicrud.space.enums;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor
 public enum SpaceCategory {
     CAFE("카페"),
