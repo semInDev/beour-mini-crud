@@ -5,16 +5,23 @@ import com.beour.beourminicrud.domain.space.dto.SpaceResponseDto;
 import com.beour.beourminicrud.domain.space.service.SpaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/spaces")
 public class SpaceController {
+
+    /*    // Spring이 Bean을 등록하는 순간을 로그로 확인해보기
+    public SpaceController() {
+        System.out.println("✅ SpaceController 생성됨!");
+    }*/
+
     private final SpaceService spaceService;
 
     @PostMapping
-    public ResponseEntity<SpaceResponseDto> createSpace(@RequestBody SpaceRequestDto spaceRequestDto) {
+    public ResponseEntity<SpaceResponseDto> createSpace(@Validated @RequestBody SpaceRequestDto spaceRequestDto) {
         return ResponseEntity.ok(spaceService.createSpace(spaceRequestDto));
     }
 
