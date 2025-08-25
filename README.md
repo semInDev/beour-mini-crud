@@ -16,9 +16,5 @@ BE:OUR 프로젝트의 축소판으로, 공간 정보 CRUD를 시작으로 로�
 - Spring Data JPA  
 - MySQL  
 - Gradle  
-- Lombok  
-
-## 🚀 오늘의 목표 (Day 1)
-- 프로젝트 및 깃허브 세팅
-- Space 등록 및 단일 조회 API 구현
-- Postman/MySQL로 정상 동작 테스트
+- Lombok
+- JUnit
