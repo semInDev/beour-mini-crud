@@ -19,4 +19,14 @@ public class GlobalExceptionHandler {
         map.put("message", ex.getMessage());
         return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<HashMap<String, Object>> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("timestamp", LocalDateTime.now());
+        map.put("status", HttpStatus.CONFLICT.value());
+        map.put("error", "Email Already Exists");
+        map.put("message", ex.getMessage());
+        return new ResponseEntity<>(map, HttpStatus.CONFLICT);
+    }
 }
