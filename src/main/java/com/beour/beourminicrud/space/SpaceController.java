@@ -6,6 +6,7 @@ import com.beour.beourminicrud.space.service.SpaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ public class SpaceController {
     private final SpaceService spaceService;
 
     @PostMapping
+    @PreAuthorize("hasRole('HOST')")
     public ResponseEntity<SpaceResponseDto> createSpace(@Validated @RequestBody SpaceRequestDto spaceRequestDto) {
         SpaceResponseDto spaceResponseDto = spaceService.createSpace(spaceRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED) // REST 관례상 201 Created가 더 적절. GET은 200 OK!
