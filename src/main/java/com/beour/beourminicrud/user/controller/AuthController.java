@@ -26,6 +26,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<UserResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
+        // 요청을 받아서 UsernamePasswordAuthenticationToken 생성
+        // 이 토큰을 AuthenticationManager에 전달 → 실제 인증 프로세스 시작
+        // AuthenticationManager → CustomUserDetailsService 호출
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequestDto.getEmail(),
@@ -33,6 +36,8 @@ public class AuthController {
                 )
         );
 
+        // Authentication 객체에 CustomUserDetails가 principal로 저장됨
+        // AuthController에서 authentication.getPrincipal() 꺼내 UserResponseDto로 변환 후 반환
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         User user = userDetails.getUser();
 

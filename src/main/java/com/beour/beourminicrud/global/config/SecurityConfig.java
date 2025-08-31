@@ -22,12 +22,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // API 테스트 시 CSRF 비활성화
+                .csrf(csrf -> csrf.disable()) // API 테스트 시 CSRF 보호 비활성화
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/spaces/**", "/signup", "/login").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/spaces/**", "/signup", "/login").permitAll() // 해당 url 가능
+                        .anyRequest().authenticated() // 나머지는 인증 필요
                 )
-                .formLogin(form -> form.disable()); // 기본 로그인 폼 비활성화 (API 방식이면 추천)
+                .formLogin(form -> form.disable()); // 스프링 기본 로그인 폼 비활성화 (API 방식이면 추천)
 
         return http.build();
     }
@@ -39,7 +39,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+        return authenticationConfiguration.getAuthenticationManager(); // security가 UserDetailsService와 PasswordEncoder를 자동 연결
     }
 
 }
