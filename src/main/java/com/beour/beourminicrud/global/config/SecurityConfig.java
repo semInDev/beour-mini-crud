@@ -24,7 +24,15 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // API 테스트 시 CSRF 보호 비활성화
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/spaces/**", "/signup", "/login").permitAll() // 해당 url 가능
+                        .requestMatchers(
+                                // swagger 관련 허용
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-resources/**",
+                                "/webjars/**",
+                                // 기타
+                                "/signup", "/login").permitAll() // 해당 url 가능
+                        .requestMatchers("/spaces/**").hasAuthority("HOST")
                         .anyRequest().authenticated() // 나머지는 인증 필요
                 )
                 .formLogin(form -> form.disable()); // 스프링 기본 로그인 폼 비활성화 (API 방식이면 추천)
