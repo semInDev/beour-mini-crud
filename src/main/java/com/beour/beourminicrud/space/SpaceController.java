@@ -50,10 +50,12 @@ public class SpaceController {
                                     schema = @Schema(implementation = SpaceResponseDto.class)
                             )
                     ),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "실패"
-                    )
+                    // @Valid, @Validated 검증 실패 시 MethodArgumentNotValidException 발생
+                    // → Spring이 자동으로 400 응답
+                    @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+                    @ApiResponse(responseCode = "401", description = "인증 실패"), // Spring Security 인증 실패 시 자동 발생
+                    // 위에서 처리하지 않은 런타임 예외 발생 시 기본적으로 500 반환
+                    @ApiResponse(responseCode = "500", description = "서버 오류")
             }
     )
     @PostMapping
@@ -64,15 +66,28 @@ public class SpaceController {
     }
 
     @Operation(
-            summary = "공간 정보 Read",
-            description = "공간의 ID를 Path 파라미터로 보내면 해당하는 공간 조회",
+            summary = "공간 단일 조회",
+            description = "공간의 ID를 Path 파라미터로 보내면 해당하는 공간의 상세 정보를 반환합니다.",
             parameters = {
                     @Parameter(
                             name = "spaceId",
                             description = "조회할 공간 ID",
                             required = true,
-                            in = ParameterIn.PATH // ParameterIn.QUERY라고 쓰면 쿼리 파라미터 변수
+                            in = ParameterIn.PATH,
+                            example = "1"
                     )
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "공간 조회 성공",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = SpaceResponseDto.class)
+                            )
+                    ),
+                    @ApiResponse(responseCode = "404", description = "해당 ID의 공간 없음"),
+                    @ApiResponse(responseCode = "500", description = "서버 오류")
             }
     )
     @GetMapping("/{spaceId}")
