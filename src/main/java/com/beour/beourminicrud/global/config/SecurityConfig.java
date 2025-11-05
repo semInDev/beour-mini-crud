@@ -33,7 +33,8 @@ public class SecurityConfig {
                         .requestMatchers("/spaces/**").hasAuthority("HOST")
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                // .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Clerk과 중복 방지 - clerk 도입을 위해 주석처리
+                ;
 
         return http.build();
     }
